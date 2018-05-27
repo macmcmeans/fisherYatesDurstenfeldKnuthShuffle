@@ -15,7 +15,7 @@ Date: 26 MAY 2018
 
 
 ## Application:
-Use this when you need a quick unbiased shuffle. Couple it with a cryptographically secure pseudo random number generator, such as [ISAAC](https://github.com/macmcmeans/isaacCSPRNG), for crypto applications.
+Use this when you need an unbiased shuffle that runs in O(*n*) time. Couple it with a cryptographically secure pseudo random number generator, such as [ISAAC](https://github.com/macmcmeans/isaacCSPRNG), for crypto applications.
 
 
 ## Dependencies:
