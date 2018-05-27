@@ -1,9 +1,9 @@
 # fisherYatesDurstenfeldKnuthShuffle
-This is the classic Knuth shuffle algorithm, an in-place shuffle (no copy) having a time complexity of O(*n*). Durstenfeld modified the original logic created by Fisher and Yates which had a time complexity of O(*n*<sup>2</sup>).
+This is the classic Knuth shuffle algorithm, an in-place shuffle (no copy) having a time complexity of O(*n*). In 1964, Durstenfeld modified the original logic created by Fisher and Yates in 1938 which had a time complexity of O(*n*<sup>2</sup>).
 
 At minimum, this function can be called by supplying an array of values to be shuffled. If an external random number generator (RNG) is not referenced, the array will be shuffled by a non-deterministic internal generator using values from Crypto.getRandomValues(), which would be suitable for Monte Carlo applications. For cryptographic purposes, an external RNG may be specified to produce deterministic shuffling.
 
-The shuffle produces statistically flat output. Optionally, a popular variant of the Fisher–Yates shuffle, the *Sattolo's algorithm*, may be used to generate random cyclic permutations of length *n* instead of random permutations. This is useful when the condition to be met involves no element of the array ever ending up in its original position.
+The shuffle produces verifiably statistically flat output, and the lack of bias may be verified using [this visiual tool](https://bost.ocks.org/mike/shuffle/compare.html). Optionally, *Sattolo's algorithm* may be used to generate random cyclic permutations of length *n* instead of random permutations. This is useful when the condition to be met involves no element of the array ever ending up in its original position.
 
 This function supports method overloading. Any of the optional parameters will be set to their default values if omitted. Since this modifies an array *in-place*, the function returns no value.
 
@@ -15,7 +15,7 @@ Date: 26 MAY 2018
 
 
 ## Application:
-Use this when you need a uniform, statistically flat shuffle. Couple it with a cryptographically secure pseudo random number generator, such as [ISAAC](https://github.com/macmcmeans/isaacCSPRNG), for crypto applications.
+Use this when you need a a fast unbiased shuffle. Couple it with a cryptographically secure pseudo random number generator, such as [ISAAC](https://github.com/macmcmeans/isaacCSPRNG), for crypto applications.
 
 
 ## Dependencies:
@@ -42,6 +42,8 @@ None.
 
 ## REFS:
 https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
+
+https://bost.ocks.org/mike/shuffle/compare.html
 <br>&nbsp;<br>
 
 
