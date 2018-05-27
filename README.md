@@ -3,36 +3,21 @@ This is the classic Knuth shuffle algorithm, an in-place shuffle (no copy) havin
 
 At minimum, this function can be called by supplying an array of values to be shuffled. If an external random number generator (RNG) is not referenced, the array will be shuffled by a non-deterministic internal generator using values from Crypto.getRandomValues(), which would be suitable for Monte Carlo applications. For cryptographic purposes, an external RNG may be specified to produce deterministic shuffling.
 
-The shuffle produces statistically flat output. Optionally, a popular variant of the Fisher–Yates shuffle, the *Sattolo's algorithm*, may be used to generate random cyclic permutations of length *n* instead of random permutations.
-
-
-, modified to outputslightlyISAAC is a *cryptographically secure* pseudo-random number generator (CSPRNG) created by Robert J. Jenkins Jr., in 1996, based on RC4. Designed for speed and security, ISAAC (Indirection, Shift, Accumulate, Add, and Count) generates 32-bit random numbers. On average, cycles are are 2^8295 values long, and are guaranteed to be at least 2^40 values long. The results are uniformly distributed, unbiased,
-and unpredictable unless you know the seed.
-
-Internally, this implementation is largely Rinquin's logic which appears to be quite similar to Jenkins' original work (in C) which he released into the Public Domain. My contributions are a namespace, so that separate instances may be created; as well as helper functions to spit out random bytes, and random strings, of desired lengths. Going further, my int32, double and range methods expand the output options from the orginal random and rand methods; and where Rinquin extends the String object, my version uses separate functions in lieu of extending the native prototype. Since ISAAC is a CSPRNG, I added logic to directly perform simple vernam (XOR) encryption. As an academic option, I created the ability to save and set the generator's internal state via JSON. Lastly, unseeded instances will internally set themselves with a default seed from Window.crypto values, which would be suitable for Monte Carlo simulations where deterministic output is not required.
-
-There are surprisingly few JavaScript examples of this CSPRNG. Considering it's over 20 years old, and has never been proven broken, one would expect more mention of it.
-
-isaacCSPRNG is emoji-friendly 😀😆😊😵, which is to say that seeds, cipher keys and plaintexts are multi-byte Unicode-safe.
+The shuffle produces statistically flat output. Optionally, a popular variant of the Fisher–Yates shuffle, the *Sattolo's algorithm*, may be used to generate random cyclic permutations of length *n* instead of random permutations. This is useful when the condition to be met involves no element of the array ever ending up in its original position.
 
 <br>&nbsp;<br>
-Version 1.1<br>
-Author: William P. "Mac" McMeans<br>
-Date: 3 MAY 2018
+Version 1<br>
+Author: William McMeans<br>
+Date: 26 MAY 2018
 <br>&nbsp;<br>
 
 
 ## Application:
-Use this to generate high-quality random numbers, and to encipher discrete messages (vernam). It also creates arbitrary length byte arrays and text strings. Note: This generator is cryptographically secure. If you don't need a secure generator then consider <a href="https://github.com/macmcmeans/aleaPRNG">ALEA</a> for your application, an RNG created by Johannes Baagøe having excellent statistical properties.
+Use this when you need a uniform, statistically flat shuffle. Couple it with a cryptographically secure pseudo random number generator, such as [ISAAC](https://github.com/macmcmeans/isaacCSPRNG), for crypto applications.
 
 
 ## Dependencies:
 None.
-<br>&nbsp;<br>
-
-
-## Period:
-Average 2^8295; not less than 2^40
 <br>&nbsp;<br>
 
 
