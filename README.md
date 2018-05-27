@@ -1,5 +1,9 @@
 # fisherYatesDurstenfeldKnuthShuffle
-This is the classic Knuth shuffle algorithm, an in-place shuffle (no copy) having a time complexity of O(n). Durstenfeld modified the original logic created by Fisher and Yates which ad a time cpomplexity of O(n<sup>2</sup>) 
+This is the classic Knuth shuffle algorithm, an in-place shuffle (no copy) having a time complexity of O(*n*). Durstenfeld modified the original logic created by Fisher and Yates which had a time complexity of O(*n*<sup>2</sup>).
+
+At minimum, this function can be called by supplying an array of values to be shuffled. If an external random number generator (RNG) is not referenced, the array will be shuffled by a non-deterministic internal generator using values from Crypto.getRandomValues(), which would be suitable for Monte Carlo applications. For cryptographic purposes, an external RNG may be specified to produce deterministic shuffling.
+
+The shuffle produces statistically flat output. Optionally, a popular variant of the Fisher–Yates shuffle, the *Sattolo's algorithm*, may be used to generate random cyclic permutations of length *n* instead of random permutations.
 
 
 , modified to outputslightlyISAAC is a *cryptographically secure* pseudo-random number generator (CSPRNG) created by Robert J. Jenkins Jr., in 1996, based on RC4. Designed for speed and security, ISAAC (Indirection, Shift, Accumulate, Add, and Count) generates 32-bit random numbers. On average, cycles are are 2^8295 values long, and are guaranteed to be at least 2^40 values long. The results are uniformly distributed, unbiased,
