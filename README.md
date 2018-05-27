@@ -5,6 +5,8 @@ At minimum, this function can be called by supplying an array of values to be sh
 
 The shuffle produces statistically flat output. Optionally, a popular variant of the Fisher–Yates shuffle, the *Sattolo's algorithm*, may be used to generate random cyclic permutations of length *n* instead of random permutations. This is useful when the condition to be met involves no element of the array ever ending up in its original position.
 
+This function supports method overloading. Any of the optional parameters will be set to their default values if omitted. Since this modifies an array *in-place*, the function returns no value.
+
 <br>&nbsp;<br>
 Version 1<br>
 Author: William McMeans<br>
@@ -24,8 +26,12 @@ None.
 ## Example usage:
 
 ```
-// return an instance of the generator initialized internally with Window.crypto (Monte Carlo)
-> prng0 = isaacCSPRNG();
+// a basic shuffle, where the generator is initialized internally with Crypto.getRandomValues (Monte Carlo)
+> _theMatrix = [0,1,2,3]; fisherYatesDurstenfeldKnuthShuffle( _theMatrix ); console.log( _theMatrix );
+
+--> *(4) [2, 0, 3, 1]* 
+
+
 
 
 // return a 32-bit fraction in the range [0, 1]
