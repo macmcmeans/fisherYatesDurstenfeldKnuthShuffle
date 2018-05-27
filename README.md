@@ -23,6 +23,11 @@ None.
 <br>&nbsp;<br>
 
 
+## Syntax:
+fisherYatesDurstenfeldKnuthShuffle( _matrixToBeShuffled, _sattoloCycleBooleanFlag, _externalRNG ); 
+<br>&nbsp;<br>
+
+
 ## Example usage:
 
 ```
