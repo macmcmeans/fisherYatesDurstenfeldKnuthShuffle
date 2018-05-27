@@ -5,7 +5,7 @@ At minimum, this function can be called by supplying an array of values to be sh
 
 The shuffle produces verifiably statistically flat output, and the lack of bias may be verified using [this visual tool](https://bost.ocks.org/mike/shuffle/compare.html). Optionally, *Sattolo's algorithm* may be used to generate random cyclic permutations of length *n* instead of random permutations. This is useful when the condition to be met involves no element of the array ever ending up in its original position.
 
-This function supports method overloading. Any of the optional parameters will be set to their default values if omitted. Since this modifies an array *in-place*, the function returns no value.
+This function supports "method overloading." Any of the optional parameters will be set to their default values if omitted. Since this modifies an array *in-place*, the function returns no value.
 
 <br>&nbsp;<br>
 Version 1<br>
@@ -37,10 +37,24 @@ fisherYatesDurstenfeldKnuthShuffle( _matrixToBeShuffled, [ _sattoloCycleBooleanF
 > console.log( _theMatrix );                      --> (4) [0, 2, 1, 3] 
 
 
-// applying Sattolo's algorithm to the shuffle (note that each element ends up in a new position)
+// apply Sattolo's algorithm to the shuffle (note that each element ends up in a new position)
 > _theMatrix = [0,1,2,3];
 > fisherYatesDurstenfeldKnuthShuffle( _theMatrix, true );
 > console.log( _theMatrix );                      --> (4) [3, 2, 0, 1] 
+
+
+// reference an external RNG
+> _simpleRNG = function() { return Math.random(); }
+> _theMatrix = [0,1,2,3];
+> fisherYatesDurstenfeldKnuthShuffle( _theMatrix, _simpleRNG );
+> console.log( _theMatrix );                      --> (4) [0, 3, 1, 2] 
+
+
+// invoke a Sattolo shuffle and use an external RNG
+> _simpleRNG = function() { return Math.random(); }
+> _theMatrix = [0,1,2,3,4,5];
+> fisherYatesDurstenfeldKnuthShuffle( _theMatrix, true, _simpleRNG );
+> console.log( _theMatrix );                      --> (6) [4, 2, 3, 0, 5, 1] 
 ```
 <br>&nbsp;<br>
 
