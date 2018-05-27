@@ -26,121 +26,22 @@ None.
 ## Example usage:
 
 ```
-// a basic shuffle, where the generator is initialized internally with Crypto.getRandomValues (Monte Carlo)
-> _theMatrix = [0,1,2,3]; fisherYatesDurstenfeldKnuthShuffle( _theMatrix ); console.log( _theMatrix );
-
---> *(4) [2, 0, 3, 1]* 
-
-
+// a basic shuffle, where the generator is initialized internally with Crypto.getRandomValues
+> _theMatrix = [0,1,2,3];
+> fisherYatesDurstenfeldKnuthShuffle( _theMatrix );
+> console.log( _theMatrix );                      --> (4) [0, 2, 1, 3] 
 
 
-// return a 32-bit fraction in the range [0, 1]
-> prng0.random();                                 -->  some random value
-
-
-// return an instance of the generator initialized with a specified seed (deterministic)
-> prng1 = isaacCSPRNG( 'this is a test' );
-
-
-// return a 32-bit fraction in the range [0, 1]
-> prng1.random();                                 -->  0.9519342305138707
-
-
-// return a signed random integer in the range [-2^31, 2^31]
-> prng1.rand();                                   -->  2052729692
-
-
-// advance the generator the specified number of cycles
-> prng1.prng( 6 );
-
-
-// return an unsigned random integer in the range [0, 2^32]
-> prng1.int32();                                  -->  288117856
-
-
-// return a 53-bit fraction in the range [0, 1]
-> prng1.double();                                 -->  0.4613288596233964
-
-
-// return 32-bit range (inclusive) //
-// from -27 to 400.65
-> prng1.range( -27, 400.625 );                    -->  267.45789149729535
-
-// from 0 to 100
-> prng1.range( 100 );                             -->  37
-
-
-// return an array of random bytes
-> prng1.bytes( 10 );                              -->  (10) [192, 182, 240, 253, 228, 223, 55, 207, 168, 102]
-
-
-// return a string of random 7-bit ASCII graphemes
-> prng1.chars( 10 );                              -->  "<3%;&mK6GH"
-
-
-// return vernam encryption of plaintext message, in hex format
-> secret = prng1.encipher( 'key', 'message', 1 )  -->  "002900470041003b0021001e003f"
-
-// return vernam decryption of ciphertext message, from hex-formatted data
-> prng1.decipher( 'key', secret, 1 )              -->  "message"
-
-
-// return vernam encryption of plaintext message (raw XOR)
-> secret = prng1.encipher( 'key', 'message' )     -->  ")GA;!?"
-
-// return vernam decryption of ciphertext message
-> secret = prng1.encipher( 'key', secret )        -->  "message"
-
-
-// export an object that describes the generator's internal state
-> state = prng1.export();                         -->  JSON
-
-
-// import an object that will set the generator's internal state
-> prng1.import( state );
-
-
-// zeroize the generator
-> prng1.reset();
-
-
-// re-seed existing generator (with a sample Gujarati phrase)
-> prng1.seed( 'પ્રિઝમ સાઇફર' );
-
-
-> prng1.random();                                 -->  0.22731631994247437
-
-
-// re-instantiate the prng1 generator with a seed (emoji and script pseudo-alphabet)
-> prng1 = isaacCSPRNG( '⛄⚽🙈𝓾𝓷𝓲𝓬𝓸𝓭𝓮' );
-
-
-// range parameters can be given in either order
-> prng1.range( 10, -20);                          -->  -15
-
-
-// return ciphertext message, in hex (using Malayalam, Bengali, emoji and Unicode math symbols)
-> secret = prng1.encipher( '𝙠𝙚𝙮 ⚷🔑⚿ എൻക്രിപ്റ്റ് ചെയ്യുക', '𝖒𝖊𝖘𝖘𝖆𝖌𝖊 📧 📩 💌 📬 প্রিজম সাইফার', true );  -->
-"d810ddabd85ddda7d804ddd8d84dddeed86adde7d813ddafd842ddbe005cd810dcd70019d81fdcbf0014d803dcb20049d85cdca2004009cf09a0099b09de09ae09fe005d099f099609a209c609fd09dc"
-
-
-// restore the plaintext (from hex input)
-> prng1.decipher( '𝙠𝙚𝙮 ⚷🔑⚿ എൻക്രിപ്റ്റ് ചെയ്യുക', secret, true );  -->
-"𝖒𝖊𝖘𝖘𝖆𝖌𝖊 📧 📩 💌 📬 প্রিজম সাইফার"
-
+// applying Sattolo's algorithm to the shuffle (note that each element ends up in a new position)
+> _theMatrix = [0,1,2,3];
+> fisherYatesDurstenfeldKnuthShuffle( _theMatrix, true );
+> console.log( _theMatrix );                      --> (4) [3, 2, 0, 1] 
 ```
-NOTE: Specifiying a seed on generator instantiation, or using the seed() method, or using either of the encipher() or decipher() methods will all produce the same effect of specifically setting the generator's internal seed. In the case of enciphering/deciphering, the key is the seed.
 <br>&nbsp;<br>
 
 
 ## REFS:
-https://github.com/rubycon/isaac.js/blob/master/isaac.js
-
-http://www.burtleburtle.net/bob/rand/isaacafa.html
-
-http://www.burtleburtle.net/bob/c/readable.c
-
-http://rosettacode.org/wiki/The_ISAAC_Cipher
+https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
 <br>&nbsp;<br>
 
 
@@ -149,15 +50,12 @@ Google Chrome on Win 8.1 (x64)
 <br>&nbsp;<br>
 
 ## Version notes:
-* 1.1 - 3 MAY 2018<br>
-NEW: Add method to expose generator internal state
-<br>&nbsp;<br>
-* 1.0 - 22 JUL 2017<br>
+* 1.0 - 26 MAY 2018<br>
 Initial release
 <br>&nbsp;<br>
 
 # License (BSD)
-Copyright (c) 2017, 2018 William McMeans
+Copyright (c) 2018 William McMeans
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
