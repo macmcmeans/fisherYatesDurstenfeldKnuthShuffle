@@ -3,7 +3,7 @@ This is the classic Knuth shuffle algorithm, an in-place shuffle (no copy) havin
 
 At minimum, this function can be called by supplying an array of values to be shuffled. If an external random number generator (RNG) is not referenced, the array will be shuffled by a non-deterministic internal generator using values from Crypto.getRandomValues(), which would be suitable for Monte Carlo applications. For cryptographic purposes, an external RNG may be specified to produce deterministic shuffling.
 
-The shuffle produces verifiably statistically flat output, and the lack of bias may be verified using [this visual tool](https://bost.ocks.org/mike/shuffle/compare.html). Optionally, *Sattolo's algorithm* may be used to generate random cyclic permutations of length *n* instead of random permutations. This is useful when the condition to be met involves no element of the array ever ending up in its original position.
+The shuffle produces verifiably statistically flat output, and the lack of bias may be checked using [this visual tool](https://bost.ocks.org/mike/shuffle/compare.html). Optionally, *Sattolo's algorithm* may be used to generate random cyclic permutations of length *n* instead of random permutations. This is useful when the condition to be met involves no element of the array ever ending up in its original position.
 
 This function supports "method overloading." Any of the optional parameters will be set to their default values if omitted. Since this modifies an array *in-place*, the function returns no value.
 
