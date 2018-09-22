@@ -31,7 +31,7 @@ fisherYatesDurstenfeldKnuthShuffle( _matrixToBeShuffled, [ _sattoloCycle, ] [ _e
 ## Example usage:
 
 ```
-// a basic shuffle, where the generator is initialized internally with Crypto.getRandomValues
+// a basic shuffle, where the generator is internally initialized  with Crypto.getRandomValues
 > _theMatrix = [0,1,2,3];
 > fisherYatesDurstenfeldKnuthShuffle( _theMatrix );
 > console.log( _theMatrix );                      --> (4) [0, 2, 1, 3] 
