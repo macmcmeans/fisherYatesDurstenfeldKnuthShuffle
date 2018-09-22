@@ -24,7 +24,7 @@ None.
 
 
 ## Syntax:
-fisherYatesDurstenfeldKnuthShuffle( _matrixToBeShuffled, [ _sattoloCycleBooleanFlag, ] [ _externalRNG ] ); 
+fisherYatesDurstenfeldKnuthShuffle( _matrixToBeShuffled, [ _sattoloCycle, ] [ _externalRNG ] ); 
 <br>&nbsp;<br>
 
 
@@ -43,7 +43,7 @@ fisherYatesDurstenfeldKnuthShuffle( _matrixToBeShuffled, [ _sattoloCycleBooleanF
 > console.log( _theMatrix );                      --> (4) [3, 2, 0, 1] 
 
 
-// reference an external RNG
+// reference an external RNG object (note the simulated overloading where the 3rd parm is called as the 2nd arg)
 > _simpleRNG = function() { return Math.random(); }
 > _theMatrix = [0,1,2,3];
 > fisherYatesDurstenfeldKnuthShuffle( _theMatrix, _simpleRNG );
