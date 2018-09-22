@@ -1,5 +1,5 @@
 # fisherYatesDurstenfeldKnuthShuffle
-This is the classic Knuth shuffle algorithm, an in-place shuffle (no copy) having a time complexity of O(*n*). In 1964, Durstenfeld modified the original logic created by Fisher and Yates in 1938 which had a time complexity of O(*n*<sup>2</sup>).
+This is the classic Knuth shuffle algorithm, an in-place shuffle having a time complexity of O(*n*). In 1964, Durstenfeld modified the original logic created by Fisher and Yates in 1938 which had a time complexity of O(*n*<sup>2</sup>).
 
 At minimum, this function can be called by supplying an array of values to be shuffled. If an external random number generator (RNG) is not referenced, the array will be shuffled by a non-deterministic internal generator using values from Crypto.getRandomValues(), which would be suitable for Monte Carlo applications. For cryptographic applications, an external RNG may be specified to produce deterministic shuffling.
 
