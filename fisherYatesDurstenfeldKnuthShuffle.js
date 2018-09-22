@@ -38,6 +38,10 @@ OF SUCH DAMAGE.
 function fisherYatesDurstenfeldKnuthShuffle( _array, _sattoloCycle, _rng ) {
     'use strict';
 
+    ///////////////////////////
+    // declare and init vars //
+    ///////////////////////////
+
     var pickIndex
         , arrayPosition = _array.length
         , positionModifier = 1
@@ -47,44 +51,79 @@ function fisherYatesDurstenfeldKnuthShuffle( _array, _sattoloCycle, _rng ) {
             return +( '0.' + uinta[ 0 ] + '' + uinta[ 1 ] );
         }
     ;
+    ///////////////////////////
 
 
-    /////////////////////////////////////////////
-    // logic that permits 'method overloading' //
+
+
+
+    ////////////////////
+    // error checking //
+    ////////////////////
+
+    if(
+        arguments.length === 2
+        &&
+        (
+            typeof _sattoloCycle !== 'function'
+            &&
+            typeof _sattoloCycle !== 'number' 
+            && 
+            typeof _sattoloCycle !== 'boolean'
+        )
+    ){
+        throw new Error( 'Second argument illegal type' );
+    }
+    ////////////////////
+
+
+
+
+
+    /////////////////////////////////////////////////
+    // logic that permits quasi-method overloading //
+    /////////////////////////////////////////////////
+
     if( arguments.length === 1 ) {
         _sattoloCycle = false;
     }          
-    if( arguments.length === 2 && ( typeof _sattoloCycle === 'boolean' && typeof _sattoloCycle === 'number' ) ) {
-        _rng = undefined;
-    }
     if( arguments.length === 2 && typeof _sattoloCycle === 'function' ) {
         _rng = _sattoloCycle;
         _sattoloCycle = false;
     }
-    /////////////////////////////////////////////
-    
+    /////////////////////////////////////////////////
+
+
+
+
 
     //////////////////////////////////
-    // set default values as needed // 
+    // set default values as needed //
+    //////////////////////////////////
+
     _sattoloCycle = Number( _sattoloCycle );
-    if( _sattoloCycle === 1 ) { --positionModifier; }
 
-    _rng = ( _rng === undefined ? csprng : _rng );
+    _rng = ( typeof _rng === 'undefined' ? csprng : _rng );
     //////////////////////////////////
+
+
+
 
 
     ////////////////////////
     // the actual shuffle //
-    
+    ////////////////////////
+
+    if( _sattoloCycle === 1 ) { --positionModifier; }
+
     // while there remain elements to shuffle...
     while( --arrayPosition ) {
 
         // pick a remaining element...
         pickIndex = Math.floor( _rng() * ( arrayPosition + positionModifier ) );
         
-        // and swap it with the current element.
+        // and swap it with the current element (no temp placeholder element).
         _array[ pickIndex ] = [ _array[ arrayPosition ], _array[ arrayPosition ] = _array[ pickIndex ] ][ 0 ];
     }
     ////////////////////////
-
 }
