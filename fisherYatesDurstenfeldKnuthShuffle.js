@@ -31,8 +31,8 @@ OF SUCH DAMAGE.
 
 /**
  * The Knuth shuffle, a standard algorithm for generating a uniformly chosen random permutation.
- * @param { array    } _array - The array to be shuffled using an in-place shuffle (no copy) having a time complexity of O(n).
- * @param { boolean  } [ _sattoloCycle=false ] - A flag indicating whether a Sattolo Cycle shuffle should be produced.
+ * @param { array } _array - The array to be shuffled using an in-place shuffle (no copy) having a time complexity of O(n).
+ * @param { boolean } [ _sattoloCycle = false ] - A flag indicating whether a Sattolo Cycle shuffle should be produced.
  * @param { function } [ _rng ] - An external random number generator used to shuffle the array.
  */
 function fisherYatesDurstenfeldKnuthShuffle( _array, _sattoloCycle, _rng ) {
