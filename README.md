@@ -1,5 +1,5 @@
 # fisherYatesDurstenfeldKnuthShuffle
-The original logic created by Fisher and Yates in 1938 had a time complexity of O(*n*<sup>2</sup>). In 1964, Durstenfeld modified the algorithm to O(*n*). Knuth made the classic shuffle famous in is book, *The Art of Computer Programming*.
+The original logic created by Fisher and Yates in 1938 had a time complexity of O(*n*<sup>2</sup>). In 1964, Durstenfeld modified the algorithm to O(*n*). Knuth made the classic shuffle famous in his book, *The Art of Computer Programming*.
 
 At minimum, it can be called by supplying an array of values to be shuffled. If an external random number generator (RNG) is not referenced, the array will be shuffled non-deterministically using values from Crypto.getRandomValues(), which would be suitable for Monte Carlo applications. For cryptographic applications, an external cryptographically secure RNG may be specified to produce deterministic, seeded shuffling.
 
