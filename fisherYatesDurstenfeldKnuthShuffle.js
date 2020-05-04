@@ -1,5 +1,5 @@
 /* ----------------------------------------------------------------------
-Copyright (c) 2018, William McMeans
+Copyright (c) 2018, W. "Mac" McMeans
 BSD License.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
