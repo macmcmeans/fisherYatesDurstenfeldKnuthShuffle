@@ -9,7 +9,7 @@ This version provides method overloading (not currently available in ECMAScript 
 
 <br>&nbsp;<br>
 Version 1<br>
-Author: William McMeans<br>
+Author: W. "Mac" McMeans<br>
 Date: 26 MAY 2018
 <br>&nbsp;<br>
 
@@ -67,7 +67,7 @@ https://bost.ocks.org/mike/shuffle/compare.html
 
 
 ## Tested:
-Google Chrome on Win 8.1 (x64)
+Google Chrome on Win 10 (x64)
 <br>&nbsp;<br>
 
 ## Version notes:
@@ -76,7 +76,7 @@ Initial release
 <br>&nbsp;<br>
 
 # License (BSD)
-Copyright (c) 2018 William McMeans
+Copyright (c) 2018 W. "Mac" McMeans
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
