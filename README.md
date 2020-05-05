@@ -80,7 +80,7 @@ Initial release
 <br>&nbsp;<br>
 
 # License (BSD)
-Copyright (c) 2018 W. "Mac" McMeans
+Copyright (c) 2018, 2020 W. "Mac" McMeans
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
