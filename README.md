@@ -71,6 +71,10 @@ Google Chrome on Win 10 (x64)
 <br>&nbsp;<br>
 
 ## Version notes:
+* 1.1 - 4 MAY 2020<br>
+NEW: Include an unshuffle function. Code cleanup.
+<br>&nbsp;<br>
+
 * 1.0 - 26 MAY 2018<br>
 Initial release
 <br>&nbsp;<br>
