@@ -1,42 +1,42 @@
-/* ----------------------------------------------------------------------
-Copyright (c) 2018, W. "Mac" McMeans
-BSD License.
-
+/*///////////////////////////////////////////////////////////////////////////////////////////////////
+fisherYatesDurstenfeldKnuthShuffle 1.1
+https://github.com/macmcmeans/fisherYatesDurstenfeldKnuthShuffle/blob/master/fisherYatesDurstenfeldKnuthShuffle.js
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+This version is
+Copyright (c) 2018, 2020 W. "Mac" McMeans
+All rights reserved.
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-
-* Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-
-* Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-
-* Neither the name of copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
-
+1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+3. Neither the name of copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 /**
  * The Knuth shuffle, a standard algorithm for generating a uniformly chosen random permutation.
- * @param { array } _array - The array to be shuffled in-place (no copy) having a time complexity of O(n).
- * @param { boolean } [ _sattoloCycle = false ] - A flag indicating whether a Sattolo Cycle shuffle should be produced.
- * @param { function } [ _rng ] - An external random number generator used to shuffle the array.
+ * @param {array} _array - The array to be shuffled using an in-place shuffle (no copy) having a time complexity of O(n).
+ * @param {boolean} [_sattoloCycle=false] - A flag indicating whether a Sattolo Cycle shuffle should be produced.
+ * @param {function} [_rng] - An external key/seed useful to shuffle the array deterministically.
+ * @returns nothing
  */
 function fisherYatesDurstenfeldKnuthShuffle( _array, _sattoloCycle, _rng ) {
     'use strict';
 
-    ///////////////////////////
-    // declare and init vars //
-    ///////////////////////////
+    ////////////////////
+    // initialization //
+    ////////////////////
 
-    var pickIndex
-        , arrayPosition = _array.length
+    var pickIndex          = 0
         , positionModifier = 1
+        , arrayPosition    = _array.length
         , csprng = function() {
             var uinta = new Uint32Array( 2 );
             window.crypto.getRandomValues( uinta );
             return +( '0.' + uinta[ 0 ] + '' + uinta[ 1 ] );
         }
     ;
-    ///////////////////////////
+    ////////////////////
 
 
 
@@ -57,7 +57,9 @@ function fisherYatesDurstenfeldKnuthShuffle( _array, _sattoloCycle, _rng ) {
             typeof _sattoloCycle !== 'boolean'
         )
     ){
-        throw new Error( 'Second argument illegal type' );
+        throw new Error( '𝗦𝗲𝗰𝗼𝗻𝗱 𝗮𝗿𝗴𝘂𝗺𝗲𝗻𝘁 𝗶𝗹𝗹𝗲𝗴𝗮𝗹 𝘁𝘆𝗽𝗲' );
+        // NOTE: Error text created with Passphrase.Life
+        // https://passphrase.life/?m=2&p=3&d=1&g=0&k=0&f=1&x=1&z=0000000000000000&z1=1&z2=4&z3=2&z4=1&z5=1&z6=2&z7=3&q=Ndjm3TXY8t012PDdNdj83TXY+9012PHdIAA12O7dNdj/3TXY9N012ALeNdj63TXY8t012PvdNdgB3iAANdj23TXY+d012PndNdjy3TXY9N012O7dNdj53SAANdgB3jXYBt412P3dNdjy3Q==
     }
     ////////////////////
 
@@ -65,50 +67,135 @@ function fisherYatesDurstenfeldKnuthShuffle( _array, _sattoloCycle, _rng ) {
 
 
 
-    /////////////////////////////////////////////////
-    // logic that permits quasi-method overloading //
-    /////////////////////////////////////////////////
+    /////////////////////////////////////////////
+    // logic that permits 'method overloading' //
+    /////////////////////////////////////////////
 
     if( arguments.length === 1 ) {
         _sattoloCycle = false;
     }          
-    if( arguments.length === 2 && typeof _sattoloCycle === 'function' ) {
+    if( arguments.length === 2 && ( typeof _sattoloCycle === 'boolean' || typeof _sattoloCycle === 'number' ) ) {
+        _rng = undefined;
+    }
+    if( arguments.length === 2 &&   typeof _sattoloCycle === 'function' ) {
         _rng = _sattoloCycle;
         _sattoloCycle = false;
     }
-    /////////////////////////////////////////////////
+    /////////////////////////////////////////////
 
 
 
 
 
-    //////////////////////////////////
-    // set default values as needed //
-    //////////////////////////////////
+    ////////////////////////////////
+    // set defaults, as necessary // 
+    ////////////////////////////////
 
     _sattoloCycle = Number( _sattoloCycle );
-
-    _rng = ( typeof _rng === 'undefined' ? csprng : _rng );
-    //////////////////////////////////
-
-
-
-
-
-    ////////////////////////
-    // the actual shuffle //
-    ////////////////////////
-
     if( _sattoloCycle === 1 ) { --positionModifier; }
 
-    // while there remain elements to shuffle...
-    while( --arrayPosition ) {
+    _rng = ( _rng === undefined ? csprng : _rng );
+    ////////////////////////////////
 
-        // pick a remaining element...
-        pickIndex = Math.floor( _rng() * ( arrayPosition + positionModifier ) );
-        
-        // and swap it with the current element (no temp placeholder element).
+
+
+
+
+    /////////////////////////////////
+    // finally, the actual shuffle //
+    /////////////////////////////////
+    
+    while( --arrayPosition ) {
+        pickIndex = Math.floor( rng() * ( arrayPosition + positionModifier ) );
         _array[ pickIndex ] = [ _array[ arrayPosition ], _array[ arrayPosition ] = _array[ pickIndex ] ][ 0 ];
     }
-    ////////////////////////
+    /////////////////////////////////
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+/**
+ * Complementary unshuffle logic for the above Knuth shuffle.
+ * @param {array} _shuffledArray - The shuffled array.
+ * @param {boolean} [_sattoloCycle=false] - A flag indicating whether a Sattolo Cycle shuffle was produced when shuffled.
+ * @param {function} _rng - An external key/seed required to unshuffle the array.
+ * @returns {array} a copy of the _shuffledArray restored to its original order.
+ */
+function fisherYatesDurstenfeldKnuthUnshuffle( _shuffledArray, _sattoloCycle, _rng ) {
+    'use strict';
+
+    ////////////////////
+    // initialization //
+    ////////////////////
+
+    var pickIndex             = 0
+        , positionModifier    = 1
+        , restoredArray       = new Array( _shuffledArray.length )       
+        , tempArray           = new Array( _shuffledArray.length )        
+        , shuffledArrayLength = _shuffledArray.length
+    ;
+    ////////////////////
+
+
+
+
+
+    /////////////////////////////////////////////
+    // logic that permits 'method overloading' //
+    /////////////////////////////////////////////
+
+    if( arguments.length === 1 ) {
+        throw new Error( '𝗡𝗼 𝙪𝙣𝙨𝙝𝙪𝙛𝙛𝙡𝙚 𝗸𝗲𝘆 𝘀𝗽𝗲𝗰𝗶𝗳𝗶𝗲𝗱' );
+        // NOTE: Error text created with Passphrase.Life
+        // https://passphrase.life/?m=2&p=4&d=1&g=0&k=0&f=1&x=1&z=0000000000000000&z1=1&z2=4&z3=2&z4=1&z5=1&z6=2&z7=3&q=Ndjh3TXY/N0gADXYat412GPeNdho3jXYXd412GreNdhb3jXYW9412GHeNdha3iAANdj43TXY8t012AbeIAA12ADeNdj93TXY8t012PDdNdj23TXY89012PbdNdjy3TXY8d0=
+    }          
+    if( arguments.length === 2 && ( typeof _sattoloCycle === 'boolean' || typeof _sattoloCycle === 'number' ) ) {
+        throw new Error( '𝗠𝗶𝘀𝘀𝗶𝗻𝗴 𝙪𝙣𝙨𝙝𝙪𝙛𝙛𝙡𝙚 𝗸𝗲𝘆' );
+        // NOTE: Error text created with Passphrase.Life
+        // https://passphrase.life/?m=2&p=3&d=1&g=0&k=0&f=1&x=1&z=0000000000000000&z1=1&z2=4&z3=2&z4=1&z5=1&z6=2&z7=3&q=Ndjg3TXY9t012ADeNdgA3jXY9t012PvdNdj03SAANdhq3jXYY9412GjeNdhd3jXYat412FveNdhb3jXYYd412FreIAA12PjdNdjy3TXYBt4=
+    }
+    if( arguments.length === 2 &&   typeof _sattoloCycle === 'function' ) {
+        _rng = _sattoloCycle;
+        _sattoloCycle = false;
+    }
+    /////////////////////////////////////////////
+
+
+
+
+
+    ////////////////////////////////
+    // set defaults, as necessary // 
+    ////////////////////////////////
+
+    _sattoloCycle = Number( _sattoloCycle );
+    if( _sattoloCycle === 1 ) { --positionModifier; }
+    ////////////////////////////////
+
+
+
+
+
+    /////////////////////
+    // unshuffle logic //
+    /////////////////////
+                                 
+    for( var arrayIndex = 0; arrayIndex < shuffledArrayLength; arrayIndex++ ) {          
+        tempArray[ arrayIndex ] = arrayIndex;
+    }
+
+    for( var arrayIndex = --shuffledArrayLength; arrayIndex > 0; arrayIndex-- ) {      
+        pickIndex = Math.floor( _rng() * ( arrayIndex + positionModifier ) );  
+        tempArray[ arrayIndex ] = [ tempArray[ pickIndex ], tempArray[ pickIndex ] = tempArray[ arrayIndex ] ][ 0 ];  
+    }
+
+    for( var arrayIndex = 0; arrayIndex < shuffledArrayLength; arrayIndex++ ) {
+        restoredArray[ tempArray[ arrayIndex ] ] = _shuffledArray[ arrayIndex ];
+    }
+
+    return restoredArray;                   
+    /////////////////////
 }
