@@ -8,9 +8,9 @@ The shuffle produces statistically flat output, and the lack of bias may be chec
 This version provides method overloading (not currently available in ECMAScript natively). Any of the optional parameters will be set to their default values if skipped. Since this modifies an array *in-place*, the function returns no value.
 
 <br>&nbsp;<br>
-Version 1<br>
+Version 1.1<br>
 Author: W. "Mac" McMeans<br>
-Date: 26 MAY 2018
+Date: 4 MASY 2020
 <br>&nbsp;<br>
 
 
