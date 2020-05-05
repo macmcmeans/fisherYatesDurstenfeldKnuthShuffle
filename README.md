@@ -10,7 +10,7 @@ This version provides method overloading (not currently available in ECMAScript 
 <br>&nbsp;<br>
 Version 1.1<br>
 Author: W. "Mac" McMeans<br>
-Date: 4 MASY 2020
+Date: 4 MAY 2020
 <br>&nbsp;<br>
 
 
