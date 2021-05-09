@@ -107,7 +107,7 @@ function fisherYatesDurstenfeldKnuthShuffle( _array, _sattoloCycle, _rng ) {
     /////////////////////////////////
     
     while( --arrayPosition ) {
-        pickIndex = Math.floor( rng() * ( arrayPosition + positionModifier ) );
+        pickIndex = Math.floor( _rng() * ( arrayPosition + positionModifier ) );
         _array[ pickIndex ] = [ _array[ arrayPosition ], _array[ arrayPosition ] = _array[ pickIndex ] ][ 0 ];
     }
     /////////////////////////////////
