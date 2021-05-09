@@ -27,10 +27,11 @@ function fisherYatesDurstenfeldKnuthShuffle( _array, _sattoloCycle, _rng ) {
     // initialization //
     ////////////////////
 
-    var pickIndex          = 0
+    let pickIndex          = 0
         , positionModifier = 1
         , arrayPosition    = _array.length
-        , csprng = function() {
+    ;    
+    const csprng = function() {
             var uinta = new Uint32Array( 2 );
             window.crypto.getRandomValues( uinta );
             return +( '0.' + uinta[ 0 ] + '' + uinta[ 1 ] );
@@ -59,7 +60,7 @@ function fisherYatesDurstenfeldKnuthShuffle( _array, _sattoloCycle, _rng ) {
     ){
         throw new Error( '𝗦𝗲𝗰𝗼𝗻𝗱 𝗮𝗿𝗴𝘂𝗺𝗲𝗻𝘁 𝗶𝗹𝗹𝗲𝗴𝗮𝗹 𝘁𝘆𝗽𝗲' );
         // NOTE: Error text created at Passphrase.Life
-        // https://passphrase.life/?m=2&p=3&d=1&g=0&k=0&f=1&x=1&z=0000000000000000&z1=1&z2=4&z3=2&z4=1&z5=1&z6=2&z7=3&q=Ndjm3TXY8t012PDdNdj83TXY+9012PHdIAA12O7dNdj/3TXY9N012ALeNdj63TXY8t012PvdNdgB3iAANdj23TXY+d012PndNdjy3TXY9N012O7dNdj53SAANdgB3jXYBt412P3dNdjy3Q==
+        // https://passphrase.life/?m=2&p=3&d=1&g=0&k=0&f=1&x=1&z=0000000000000000&z1=1&z2=1&z3=1&z4=1&z5=1&z6=2&z7=3&q=Ndjm3TXY8t012PDdNdj83TXY+9012PHdIAA12O7dNdj/3TXY9N012ALeNdj63TXY8t012PvdNdgB3iAANdj23TXY+d012PndNdjy3TXY9N012O7dNdj53SAANdgB3jXYBt412P3dNdjy3Q==
     }
     ////////////////////
 
@@ -71,13 +72,13 @@ function fisherYatesDurstenfeldKnuthShuffle( _array, _sattoloCycle, _rng ) {
     // logic that permits 'method overloading' //
     /////////////////////////////////////////////
 
-    if( arguments.length === 1 ) {
+    if( 1 === arguments.length ) {
         _sattoloCycle = false;
     }          
-    if( arguments.length === 2 && ( typeof _sattoloCycle === 'boolean' || typeof _sattoloCycle === 'number' ) ) {
+    if( 2 === arguments.length && ( 'boolean' === typeof _sattoloCycle || 'number' === typeof _sattoloCycle ) ) {
         _rng = undefined;
     }
-    if( arguments.length === 2 &&   typeof _sattoloCycle === 'function' ) {
+    if( 2 === arguments.length &&  'function' === typeof ) {
         _rng = _sattoloCycle;
         _sattoloCycle = false;
     }
@@ -92,9 +93,9 @@ function fisherYatesDurstenfeldKnuthShuffle( _array, _sattoloCycle, _rng ) {
     ////////////////////////////////
 
     _sattoloCycle = Number( _sattoloCycle );
-    if( _sattoloCycle === 1 ) { --positionModifier; }
+    if( 1 === _sattoloCycle ) { --positionModifier; }
 
-    _rng = ( _rng === undefined ? csprng : _rng );
+    _rng = ( undefined === _rng ? csprng : _rng );
     ////////////////////////////////
 
 
@@ -131,7 +132,7 @@ function fisherYatesDurstenfeldKnuthUnshuffle( _shuffledArray, _sattoloCycle, _r
     // initialization //
     ////////////////////
 
-    var pickIndex             = 0
+    let pickIndex             = 0
         , positionModifier    = 1
         , restoredArray       = new Array( _shuffledArray.length )       
         , tempArray           = new Array( _shuffledArray.length )        
@@ -147,17 +148,17 @@ function fisherYatesDurstenfeldKnuthUnshuffle( _shuffledArray, _sattoloCycle, _r
     // logic that permits 'method overloading' //
     /////////////////////////////////////////////
 
-    if( arguments.length === 1 ) {
+    if( 1 === arguments.length ) {
         throw new Error( '𝗡𝗼 𝙪𝙣𝙨𝙝𝙪𝙛𝙛𝙡𝙚 𝗸𝗲𝘆 𝘀𝗽𝗲𝗰𝗶𝗳𝗶𝗲𝗱' );
         // NOTE: Error text created at Passphrase.Life
         // https://passphrase.life/?m=2&p=4&d=1&g=0&k=0&f=1&x=1&z=0000000000000000&z1=1&z2=4&z3=2&z4=1&z5=1&z6=2&z7=3&q=Ndjh3TXY/N0gADXYat412GPeNdho3jXYXd412GreNdhb3jXYW9412GHeNdha3iAANdj43TXY8t012AbeIAA12ADeNdj93TXY8t012PDdNdj23TXY89012PbdNdjy3TXY8d0=
     }          
-    if( arguments.length === 2 && ( typeof _sattoloCycle === 'boolean' || typeof _sattoloCycle === 'number' ) ) {
+    if( 2 === arguments.length && ( 'boolean' === typeof _sattoloCycle || 'number' === typeof _sattoloCycle ) ) {
         throw new Error( '𝗠𝗶𝘀𝘀𝗶𝗻𝗴 𝙪𝙣𝙨𝙝𝙪𝙛𝙛𝙡𝙚 𝗸𝗲𝘆' );
         // NOTE: Error text created at Passphrase.Life
         // https://passphrase.life/?m=2&p=3&d=1&g=0&k=0&f=1&x=1&z=0000000000000000&z1=1&z2=4&z3=2&z4=1&z5=1&z6=2&z7=3&q=Ndjg3TXY9t012ADeNdgA3jXY9t012PvdNdj03SAANdhq3jXYY9412GjeNdhd3jXYat412FveNdhb3jXYYd412FreIAA12PjdNdjy3TXYBt4=
     }
-    if( arguments.length === 2 &&   typeof _sattoloCycle === 'function' ) {
+    if( 2 === arguments.length &&  'function' === typeof _sattoloCycle ) {
         _rng = _sattoloCycle;
         _sattoloCycle = false;
     }
@@ -172,7 +173,7 @@ function fisherYatesDurstenfeldKnuthUnshuffle( _shuffledArray, _sattoloCycle, _r
     ////////////////////////////////
 
     _sattoloCycle = Number( _sattoloCycle );
-    if( _sattoloCycle === 1 ) { --positionModifier; }
+    if( 1 === _sattoloCycle ) { --positionModifier; }
     ////////////////////////////////
 
 
@@ -183,16 +184,16 @@ function fisherYatesDurstenfeldKnuthUnshuffle( _shuffledArray, _sattoloCycle, _r
     // unshuffle logic //
     /////////////////////
                                  
-    for( var arrayIndex = 0; arrayIndex < shuffledArrayLength; arrayIndex++ ) {          
+    for( let arrayIndex = 0; arrayIndex < shuffledArrayLength; arrayIndex++ ) {          
         tempArray[ arrayIndex ] = arrayIndex;
     }
 
-    for( var arrayIndex = --shuffledArrayLength; arrayIndex > 0; arrayIndex-- ) {      
+    for( let arrayIndex = --shuffledArrayLength; arrayIndex > 0; arrayIndex-- ) {      
         pickIndex = Math.floor( _rng() * ( arrayIndex + positionModifier ) );  
         tempArray[ arrayIndex ] = [ tempArray[ pickIndex ], tempArray[ pickIndex ] = tempArray[ arrayIndex ] ][ 0 ];  
     }
 
-    for( var arrayIndex = 0; arrayIndex < shuffledArrayLength; arrayIndex++ ) {
+    for( let arrayIndex = 0; arrayIndex < shuffledArrayLength; arrayIndex++ ) {
         restoredArray[ tempArray[ arrayIndex ] ] = _shuffledArray[ arrayIndex ];
     }
 
