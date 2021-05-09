@@ -48,14 +48,14 @@ function fisherYatesDurstenfeldKnuthShuffle( _array, _sattoloCycle, _rng ) {
     ////////////////////
 
     if(
-        arguments.length === 2
+        2 === arguments.length
         &&
         (
-            typeof _sattoloCycle !== 'function'
+            'function' !== typeof _sattoloCycle
             &&
-            typeof _sattoloCycle !== 'number' 
+            'number'   !== typeof _sattoloCycle  
             && 
-            typeof _sattoloCycle !== 'boolean'
+            'boolean'  !== typeof _sattoloCycle 
         )
     ){
         throw new Error( '𝗦𝗲𝗰𝗼𝗻𝗱 𝗮𝗿𝗴𝘂𝗺𝗲𝗻𝘁 𝗶𝗹𝗹𝗲𝗴𝗮𝗹 𝘁𝘆𝗽𝗲' );
@@ -78,7 +78,7 @@ function fisherYatesDurstenfeldKnuthShuffle( _array, _sattoloCycle, _rng ) {
     if( 2 === arguments.length && ( 'boolean' === typeof _sattoloCycle || 'number' === typeof _sattoloCycle ) ) {
         _rng = undefined;
     }
-    if( 2 === arguments.length &&  'function' === typeof ) {
+    if( 2 === arguments.length &&  'function' === typeof _sattoloCycle ) {
         _rng = _sattoloCycle;
         _sattoloCycle = false;
     }
