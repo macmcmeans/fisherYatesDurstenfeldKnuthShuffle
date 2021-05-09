@@ -1,11 +1,11 @@
 # fisherYatesDurstenfeldKnuthShuffle (and unShuffle)
 The original logic created by Fisher and Yates in 1938 had a time complexity of O(*n*<sup>2</sup>). In 1964, Durstenfeld modified the algorithm to O(*n*). Knuth made the classic shuffle famous in his 1968 book, *The Art of Computer Programming*.
 
-At minimum, it can be called by supplying an array of values to be shuffled. If an external random number generator (RNG) is not referenced, the array will be shuffled non-deterministically using values from Crypto.getRandomValues(), which would be suitable for Monte Carlo applications. For cryptography purposes, an external cryptographically secure RNG may be specified to produce deterministic, seeded shuffling.
+At minimum, it can be called by supplying an array of values to be shuffled. If an external random number generator (RNG) is not referenced, the array will be shuffled non-deterministically using values from Crypto.getRandomValues(), which would be suitable for Monte Carlo applications. For cryptography purposes, an external cryptographically secure RNG may be specified to produce deterministic, seeded shuffling and unshuffling.
 
 The shuffle produces statistically flat output, and the lack of bias may be checked using [this visual tool](https://bost.ocks.org/mike/shuffle/compare.html). Optionally, [*Sattolo's algorithm*](https://news.ycombinator.com/item?id=14967697) may be used to generate random cyclic permutations of length *n* instead of random permutations. This is useful when the condition to be met involves no element of the array ever ending up in its original position.
 
-This version provides method overloading (not currently available in ECMAScript natively). Any of the optional parameters will be set to their default values if skipped. Since this modifies an array *in-place*, the function returns no value.
+This version provides method overloading (not currently available in ECMAScript natively). Any of the optional parameters will be set to their default values if skipped.
 
 <br>&nbsp;<br>
 Version 1.1<br>
