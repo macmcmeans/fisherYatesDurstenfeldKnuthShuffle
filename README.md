@@ -5,7 +5,7 @@ At minimum, it can be called by supplying an array of values to be shuffled. If 
 
 The shuffle produces statistically flat output, and the lack of bias may be checked using [this visual tool](https://bost.ocks.org/mike/shuffle/compare.html). Optionally, [*Sattolo's algorithm*](https://news.ycombinator.com/item?id=14967697) may be used to generate random cyclic permutations of length *n* instead of random permutations. This is useful when the condition to be met involves no element of the array ever ending up in its original position (this condition is unsuited for cryptography).
 
-This version provides method overloading (not currently available in ECMAScript natively). Any of the optional parameters will be set to their default values if skipped.
+This version provides method overloading (not currently available in ECMAScript natively). Any optional parameters will be set to default values if omitted.
 
 <br>&nbsp;<br>
 Version 1.1<br>
