@@ -24,7 +24,7 @@ None.
 
 
 ## Syntax:
-fisherYatesDurstenfeldKnuthShuffle( _matrixToBeShuffled, [ _sattoloCycle, ] [ _externalRNG ] ); 
+fisherYatesDurstenfeldKnuthShuffle( _matrixToBeShuffled, [*sattoloCycle*], [*externalRNG*] ); 
 <br>&nbsp;<br>
 
 
