@@ -26,6 +26,8 @@ None.
 ## Syntax:
 fisherYatesDurstenfeldKnuthShuffle( __matrixToBeShuffled__, [*sattoloCycle*], [*externalRNG*] ); 
 <br>&nbsp;<br>
+let orderedMatrix = fisherYatesDurstenfeldKnuthUnshuffle( __matrixThatWasShuffled__, [*sattoloCycle*], __externalrng__ );
+<br>&nbsp;<br>
 
 
 ## Example usage:
