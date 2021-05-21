@@ -30,6 +30,7 @@ function fisherYatesDurstenfeldKnuthShuffle( _array, _sattoloCycle, _rng ) {
     let pickIndex          = 0
         , positionModifier = 1
         , arrayPosition    = _array.length
+        , tempArray        = new Array( arrayPosition )
     ; 
     const csprng = function() {
             let uinta    = new Uint32Array( 2 )
@@ -113,13 +114,15 @@ function fisherYatesDurstenfeldKnuthShuffle( _array, _sattoloCycle, _rng ) {
     // finally, the actual shuffle //
     /////////////////////////////////
     
+    tempArray = _array;
+    
     while( --arrayPosition ) {
         pickIndex = Math.floor( _rng() * ( arrayPosition + positionModifier ) );
-        _array[ pickIndex ] = [ _array[ arrayPosition ], _array[ arrayPosition ] = _array[ pickIndex ] ][ 0 ];
+        tempArray[ pickIndex ] = [ tempArray[ arrayPosition ], tempArray[ arrayPosition ] = tempArray[ pickIndex ] ][ 0 ];
     }
     /////////////////////////////////
 
-    return _array;
+    return tempArray;
 }
 
 
