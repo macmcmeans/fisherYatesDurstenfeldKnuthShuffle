@@ -89,7 +89,7 @@ Google Chrome on Win 10 (x64)
 
 ## Version notes:
 * 1.2 - 21 MAY 2021<br>
-``bug`` Fix error in unshuffle logic.<br>
+``bug`` Fix error in unshuffle logic where the restore loop was too short.<br>
 ``update`` Light code refactoring.<br>
 ``update`` Revise readme.
 <br>&nbsp;<br>
