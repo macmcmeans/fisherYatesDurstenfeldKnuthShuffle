@@ -104,7 +104,7 @@ Google Chrome on Win 10 (x64)
 <br>&nbsp;<br>
 
 # License (BSD)
-Copyright (c) 2018, 2020 W. "Mac" McMeans
+Copyright © 2018, 2020, 2021 W. "Mac" McMeans
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
