@@ -1,9 +1,9 @@
 /*///////////////////////////////////////////////////////////////////////////////////////////////////
-fisherYatesDurstenfeldKnuthShuffle 1.1
+fisherYatesDurstenfeldKnuthShuffle 1.2
 https://github.com/macmcmeans/fisherYatesDurstenfeldKnuthShuffle/blob/master/fisherYatesDurstenfeldKnuthShuffle.js
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 This version is
-Copyright (c) 2018, 2020 W. "Mac" McMeans
+Copyright (c) 2018, 2020, 2021 W. "Mac" McMeans
 All rights reserved.
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
