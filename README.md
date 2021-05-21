@@ -3,7 +3,7 @@ The original logic created by Fisher and Yates in 1938 had a time complexity of 
 
 At minimum, it can be called by supplying an array of values to be shuffled. If an external random number generator (RNG) is not referenced, the array will be shuffled non-deterministically using values from Crypto.getRandomValues(), which would be suitable for Monte Carlo applications. For cryptography purposes, an external cryptographically secure RNG should be specified to produce deterministic, seeded shuffling and unshuffling.
 
-The shuffle produces statistically flat output, and the lack of bias may be checked using [this visual tool](https://bost.ocks.org/mike/shuffle/compare.html). Optionally, [*Sattolo's algorithm*](https://news.ycombinator.com/item?id=14967697) may be used to generate random cyclic permutations of length *n* instead of random permutations. This is useful when the condition to be met involves no element of the array ever ending up in its original position (this condition is unsuited for cryptography).
+The shuffle produces statistically flat output, and the lack of bias may be checked using [this visual tool](https://bost.ocks.org/mike/shuffle/compare.html). Optionally, [*Sattolo's algorithm*](https://archive.is/j8KwS) may be used to generate random cyclic permutations of length *n* instead of random permutations. This is useful when the condition to be met involves no element of the array ever ending up in its original position (this condition is unsuited for cryptography).
 
 This version provides [function overloading](https://en.wikipedia.org/wiki/Function_overloading) using internal logic having no external dependencies. Any optional parameters will be set to default values if omitted.
 
