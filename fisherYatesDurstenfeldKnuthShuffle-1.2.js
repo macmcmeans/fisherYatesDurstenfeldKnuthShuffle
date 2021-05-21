@@ -32,7 +32,8 @@ function fisherYatesDurstenfeldKnuthShuffle( _array, _sattoloCycle, _rng ) {
         , arrayPosition    = _array.length
         , tempArray        = new Array( arrayPosition )
     ; 
-    const csprng = function() {
+    const csprng = 
+        function() {
             let uinta    = new Uint32Array( 2 )
                 , mrand  = new Uint8ClampedArray( 1 )
                 , prefix = [ '0.', '0.0' ]
