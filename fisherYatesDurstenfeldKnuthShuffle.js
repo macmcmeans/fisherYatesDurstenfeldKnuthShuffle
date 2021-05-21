@@ -14,10 +14,10 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 ///////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 /**
- * The Knuth shuffle, a standard algorithm for generating a uniformly chosen random permutation.
+ * The Durstenfeld shuffle, a standard algorithm for generating a uniformly chosen random permutation.
  * @param {array} _array - The array to be shuffled using an in-place shuffle (no copy) having a time complexity of O(n).
- * @param {boolean} [_sattoloCycle=false] - A flag indicating whether a Sattolo Cycle shuffle should be produced.
- * @param {function} [_rng] - An external key/seed useful to shuffle the array deterministically.
+ * @param {boolean} [_sattoloCycle=false] - An optional flag indicating whether a Sattolo Cycle shuffle should be produced.
+ * @param {function} [_rng] - An optional external key/seed useful to shuffle the array (required when deterministically shuffling).
  * @returns nothing
  */
 function fisherYatesDurstenfeldKnuthShuffle( _array, _sattoloCycle, _rng ) {
@@ -30,13 +30,20 @@ function fisherYatesDurstenfeldKnuthShuffle( _array, _sattoloCycle, _rng ) {
     let pickIndex          = 0
         , positionModifier = 1
         , arrayPosition    = _array.length
-    ;    
+    ; 
     const csprng = function() {
-            var uinta = new Uint32Array( 2 );
-            window.crypto.getRandomValues( uinta );
-            return +( '0.' + uinta[ 0 ] + '' + uinta[ 1 ] );
+            let uinta    = new Uint32Array( 2 )
+                , mrand  = new Uint8ClampedArray( 1 )
+                , prefix = [ '0.', '0.0' ]
+                , rindex = 0
+            ;
+            crypto.getRandomValues( uinta );
+            crypto.getRandomValues( mrand );
+            rindex = mrand[ 0 ] > 128 ? 1 : 0
+            return +( prefix[ rindex ] + uinta[ 0 ] + '' + uinta[ 1 ] );
         }
     ;
+    
     ////////////////////
 
 
@@ -119,9 +126,9 @@ function fisherYatesDurstenfeldKnuthShuffle( _array, _sattoloCycle, _rng ) {
 
 
 /**
- * Complementary unshuffle logic for the above Knuth shuffle.
+ * Complementary unshuffle logic for the above Durstenfeld shuffle.
  * @param {array} _shuffledArray - The shuffled array.
- * @param {boolean} [_sattoloCycle=false] - A flag indicating whether a Sattolo Cycle shuffle was produced when shuffled.
+ * @param {boolean} [_sattoloCycle=false] - An optional flag indicating whether a Sattolo Cycle shuffle was produced when shuffled.
  * @param {function} _rng - An external key/seed required to unshuffle the array.
  * @returns {array} a copy of the _shuffledArray restored to its original order.
  */
