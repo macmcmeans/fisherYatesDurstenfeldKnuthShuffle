@@ -32,27 +32,27 @@ fisherYatesDurstenfeldKnuthShuffle( __matrixToBeShuffled__, [*sattoloCycle*], [*
 
 ```
 // a basic shuffle, where the generator is internally initialized with Crypto.getRandomValues
-> _theMatrix = [0,1,2,3];
+> let _theMatrix = [0,1,2,3];
 > fisherYatesDurstenfeldKnuthShuffle( _theMatrix );
 > console.log( _theMatrix );                      --> (4) [0, 2, 1, 3] 
 
 
 // apply Sattolo's algorithm to the shuffle (note that each element ends up in a new position)
-> _theMatrix = [0,1,2,3];
+> let _theMatrix = [0,1,2,3];
 > fisherYatesDurstenfeldKnuthShuffle( _theMatrix, true );
 > console.log( _theMatrix );                      --> (4) [3, 2, 0, 1] 
 
 
 // reference an external RNG object (note the method overloading where the 3rd parm is called as the 2nd arg)
-> _simpleRNG = function() { return Math.random(); }
-> _theMatrix = [0,1,2,3];
+> const _simpleRNG = function() { return Math.random(); }
+> let _theMatrix = [0,1,2,3];
 > fisherYatesDurstenfeldKnuthShuffle( _theMatrix, _simpleRNG );
 > console.log( _theMatrix );                      --> (4) [0, 3, 1, 2] 
 
 
 // invoke a Sattolo shuffle and use an external RNG
-> _simpleRNG = function() { return Math.random(); }
-> _theMatrix = [0,1,2,3,4,5];
+> const _simpleRNG = function() { return Math.random(); }
+> let _theMatrix = [0,1,2,3,4,5];
 > fisherYatesDurstenfeldKnuthShuffle( _theMatrix, true, _simpleRNG );
 > console.log( _theMatrix );                      --> (6) [4, 2, 3, 0, 5, 1] 
 ```
