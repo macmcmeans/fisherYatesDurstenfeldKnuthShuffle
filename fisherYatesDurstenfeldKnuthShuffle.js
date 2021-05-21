@@ -15,10 +15,10 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 /**
  * The Durstenfeld shuffle, a standard algorithm for generating a uniformly chosen random permutation.
- * @param {array} _array - The array to be shuffled using an in-place shuffle (no copy) having a time complexity of O(n).
+ * @param {array} _array - The array to be shuffled using an in-place shuffle (no copy).
  * @param {boolean} [_sattoloCycle=false] - An optional flag indicating whether a Sattolo Cycle shuffle should be produced.
  * @param {function} [_rng] - An optional external key/seed useful to shuffle the array (required when deterministically shuffling).
- * @returns nothing
+ * @returns nothing.
  */
 function fisherYatesDurstenfeldKnuthShuffle( _array, _sattoloCycle, _rng ) {
     'use strict';
@@ -127,10 +127,10 @@ function fisherYatesDurstenfeldKnuthShuffle( _array, _sattoloCycle, _rng ) {
 
 /**
  * Complementary unshuffle logic for the above Durstenfeld shuffle.
- * @param {array} _shuffledArray - The shuffled array.
+ * @param {array} _shuffledArray - The shuffled array which will be restored in-place.
  * @param {boolean} [_sattoloCycle=false] - An optional flag indicating whether a Sattolo Cycle shuffle was produced when shuffled.
  * @param {function} _rng - An external key/seed required to unshuffle the array.
- * @returns {array} a copy of the _shuffledArray restored to its original order.
+ * @returns nothing.
  */
 function fisherYatesDurstenfeldKnuthUnshuffle( _shuffledArray, _sattoloCycle, _rng ) {
     'use strict';
@@ -195,7 +195,7 @@ function fisherYatesDurstenfeldKnuthUnshuffle( _shuffledArray, _sattoloCycle, _r
         tempArray[ arrayIndex ] = arrayIndex;
     }
 
-    for( let arrayIndex = --shuffledArrayLength; arrayIndex > 0; arrayIndex-- ) {      
+    for( let arrayIndex = shuffledArrayLength - 1; arrayIndex > 0; arrayIndex-- ) {      
         pickIndex = Math.floor( _rng() * ( arrayIndex + positionModifier ) );  
         tempArray[ arrayIndex ] = [ tempArray[ pickIndex ], tempArray[ pickIndex ] = tempArray[ arrayIndex ] ][ 0 ];  
     }
@@ -204,6 +204,6 @@ function fisherYatesDurstenfeldKnuthUnshuffle( _shuffledArray, _sattoloCycle, _r
         restoredArray[ tempArray[ arrayIndex ] ] = _shuffledArray[ arrayIndex ];
     }
 
-    return restoredArray;                   
+    _shuffledArray = restoredArray;                   
     /////////////////////
 }
