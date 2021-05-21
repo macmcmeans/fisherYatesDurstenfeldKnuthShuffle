@@ -24,9 +24,9 @@ None.
 
 
 ## Syntax:
-fisherYatesDurstenfeldKnuthShuffle( __matrixToBeShuffled__, [*sattoloCycle*], [*externalRNG*] ); 
+let shuffledArray = fisherYatesDurstenfeldKnuthShuffle( __arrayToBeShuffled__, [*sattoloCycle*], [*externalRNG*] ); 
 <br>&nbsp;<br>
-let orderedMatrix = fisherYatesDurstenfeldKnuthUnshuffle( __matrixThatWasShuffled__, [*sattoloCycle*], __externalrng__ );
+let orderedArray = fisherYatesDurstenfeldKnuthUnshuffle( __arrayThatWasShuffled__, [*sattoloCycle*], __externalrng__ );
 <br>&nbsp;<br>
 
 
@@ -34,29 +34,44 @@ let orderedMatrix = fisherYatesDurstenfeldKnuthUnshuffle( __matrixThatWasShuffle
 
 ```
 // #1 apply a basic shuffle, where the generator is internally initialized with Crypto.getRandomValues
-> let _theMatrix = [0,1,2,3];
-> fisherYatesDurstenfeldKnuthShuffle( _theMatrix );
-> console.log( _theMatrix );                      --> (4) [0, 2, 1, 3] 
+> let _theArray = [0,1,2,3];
+> let shuffledArray = fisherYatesDurstenfeldKnuthShuffle( _theArray );
+> console.log( shuffledArray );                      --> (4) [0, 2, 1, 3] 
 
 
 // #2 apply Sattolo's algorithm to the shuffle (note that each element ends up in a new position)
-> let _theMatrix = [0,1,2,3];
-> fisherYatesDurstenfeldKnuthShuffle( _theMatrix, true );
-> console.log( _theMatrix );                      --> (4) [3, 2, 0, 1] 
+> let _theArray = [0,1,2,3];
+> let shuffledArray = fisherYatesDurstenfeldKnuthShuffle( _theArray, true );
+> console.log( shuffledArray );                      --> (4) [3, 2, 0, 1] 
 
 
 // #3 reference an external RNG object (note the method overloading where the 3rd parm is called as the 2nd arg)
 > const _simpleRNG = function() { return Math.random(); }
-> let _theMatrix = [0,1,2,3];
-> fisherYatesDurstenfeldKnuthShuffle( _theMatrix, _simpleRNG );
-> console.log( _theMatrix );                      --> (4) [0, 3, 1, 2] 
+> let _theArray = [0,1,2,3];
+> let shuffledArray = fisherYatesDurstenfeldKnuthShuffle( _theArray, _simpleRNG );
+> console.log( shuffledArray );                      --> (4) [0, 3, 1, 2] 
 
 
 // #4 invoke a Sattolo shuffle and use an external RNG
 > const _simpleRNG = function() { return Math.random(); }
-> let _theMatrix = [0,1,2,3,4,5];
-> fisherYatesDurstenfeldKnuthShuffle( _theMatrix, true, _simpleRNG );
-> console.log( _theMatrix );                      --> (6) [4, 2, 3, 0, 5, 1] 
+> let _theArray = [0,1,2,3,4,5];
+> let shuffledArray = fisherYatesDurstenfeldKnuthShuffle( _theArray, true, _simpleRNG );
+> console.log( shuffledArray );                      --> (6) [4, 2, 3, 0, 5, 1] 
+
+
+// #5 securely shuffle and restore a string using an external cryptographically secure RNG (for example, isaacCSPRNG)
+> const _theString = 'this is my test string', _theArray = _theString.split( '' );
+> const _secureRNG = isaacCSPRNG( 'this is my seed' );    // init RNG
+> const shuffledArray = fisherYatesDurstenfeldKnuthShuffle( _theArray, _secureRNG.double );
+> console.log( shuffledArray );                      --> (22) ["t", " ", "h", "y", "i", "t", "r", "n", "t", "s", "g", "i", " ", "i", "s", " ", "e", " ", "t", "m", "s", "s"]
+
+> _secureRNG.seed( 'this is my seed' );    // reset RNG
+> const restoredArray = fisherYatesDurstenfeldKnuthUnshuffle( shuffledArray, _secureRNG.double );
+> console.log( restoredArray );                      --> (22) ["t", "h", "i", "s", " ", "i", "s", " ", "m", "y", " ", "t", "e", "s", "t", " ", "s", "t", "r", "i", "n", "g"]
+> let _newString = restoredArray.join( '' );
+> console.log( _newString );                         --> "this is my test string"
+
+// NOTE: The use of constants in this example is to make clear that copies of arrays are returned (no copy in-place); the original arrays are not altered.
 ```
 <br>&nbsp;<br>
 
