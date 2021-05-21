@@ -8,9 +8,9 @@ The shuffle produces statistically flat output, and the lack of bias may be chec
 This version provides [function overloading](https://en.wikipedia.org/wiki/Function_overloading) using internal logic having no external dependencies. Any optional parameters will be set to default values if omitted.
 
 <br>&nbsp;<br>
-Version 1.1<br>
+Version 1.2<br>
 Author: W. "Mac" McMeans<br>
-Date: 4 MAY 2020
+Date: 21 MAY 2021
 <br>&nbsp;<br>
 
 
@@ -73,12 +73,18 @@ Google Chrome on Win 10 (x64)
 <br>&nbsp;<br>
 
 ## Version notes:
+* 1.2 - 21 MAY 2021<br>
+``bug`` Fix error in unshuffle logic.<br>
+``update`` Light code refactoring.
+<br>&nbsp;<br>
+
 * 1.1 - 4 MAY 2020<br>
-NEW: Include an unshuffle function. Code cleanup.
+``feature`` Include an unshuffle function.<br>
+``update`` Code cleanup.<br>
 <br>&nbsp;<br>
 
 * 1.0 - 26 MAY 2018<br>
-Initial release
+``release`` Initial release.
 <br>&nbsp;<br>
 
 # License (BSD)
