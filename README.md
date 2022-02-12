@@ -1,7 +1,7 @@
 # fisherYatesDurstenfeldKnuthShuffle (and unShuffle) [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity) [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 The original logic created by Fisher and Yates in 1938 had a time complexity of O(*n*<sup>2</sup>). In 1964, Durstenfeld modified the algorithm to O(*n*). Knuth made the classic shuffle famous in his 1968 book, [*The Art of Computer Programming*](https://github.com/manjunath5496/The-Art-of-Computer-Programming-Books).
 
-At minimum, it can be called by supplying a single-dimension array of values to be shuffled. If an external random number generator (RNG) is not referenced, the array will be shuffled non-deterministically using values from Crypto.getRandomValues(), which would be suitable for Monte Carlo applications. For cryptography purposes, an external cryptographically secure RNG should be specified to produce deterministic, seeded shuffling and unshuffling.
+At minimum, it can be called by supplying a single-dimension array of values to be shuffled. If an external random number generator (RNG) is not referenced, the array will be shuffled non-deterministically using values from Crypto.getRandomValues(), which would be suitable for Monte Carlo applications. For cryptography purposes, an external cryptographically secure RNG, such as [ISAAC](https://github.com/macmcmeans/isaacCSPRNG) should be specified to produce deterministic, seeded shuffling and unshuffling.
 
 The shuffle produces statistically flat output, and the lack of bias may be checked using [this visual tool](https://bost.ocks.org/mike/shuffle/compare.html).
 
