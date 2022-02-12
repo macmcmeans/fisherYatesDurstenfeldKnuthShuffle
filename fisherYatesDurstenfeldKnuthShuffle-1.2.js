@@ -20,7 +20,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
  * @param {function} [_rng] - An optional external key/seed useful to shuffle the array (required when deterministically shuffling).
  * @returns {array} - A copy of _array in a shuffled state.
  */
-const function fisherYatesDurstenfeldKnuthShuffle( _array, _sattoloCycle, _rng ) {
+const fisherYatesDurstenfeldKnuthShuffle = function( _array, _sattoloCycle, _rng ) {
     'use strict';
 
     ////////////////////
@@ -137,7 +137,7 @@ const function fisherYatesDurstenfeldKnuthShuffle( _array, _sattoloCycle, _rng )
  * @param {function} _rng - An external key/seed required to unshuffle the array.
  * @returns {array} - A copy of the _shuffledArray in a reordered state.
  */
-const function fisherYatesDurstenfeldKnuthUnshuffle( _shuffledArray, _sattoloCycle, _rng ) {
+const fisherYatesDurstenfeldKnuthUnshuffle = function( _shuffledArray, _sattoloCycle, _rng ) {
     'use strict';
 
     ////////////////////
