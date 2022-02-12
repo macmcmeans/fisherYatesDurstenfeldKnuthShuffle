@@ -45,7 +45,6 @@ const function fisherYatesDurstenfeldKnuthShuffle( _array, _sattoloCycle, _rng )
             return +( prefix[ rindex ] + uinta[ 0 ] + '' + uinta[ 1 ] );
         }
     ;
-    
     ////////////////////
 
 
@@ -209,7 +208,6 @@ const function fisherYatesDurstenfeldKnuthUnshuffle( _shuffledArray, _sattoloCyc
     for( let arrayIndex = 0; arrayIndex < shuffledArrayLength; arrayIndex++ ) {
         restoredArray[ tempArray[ arrayIndex ] ] = _shuffledArray[ arrayIndex ];
     }
-
     /////////////////////
     
     return restoredArray;                   
