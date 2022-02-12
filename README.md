@@ -7,7 +7,7 @@ The shuffle produces statistically flat output, and the lack of bias may be chec
 
 Optionally, [*Sattolo's algorithm*](https://archive.is/j8KwS) may be used to generate random cyclic permutations of length *n* instead of random permutations. This is useful when the condition to be met involves no element of the array ever ending up in its original position ([derangement](https://archive.is/FKrB2)), but is unsuited for cryptography.
 
-This version provides [function overloading](https://en.wikipedia.org/wiki/Function_overloading) using internal logic having no external dependencies. Any optional parameters will be set to default values if omitted.
+This version provides [function overloading](https://en.wikipedia.org/wiki/Function_overloading) using internal logic having no external dependencies. Any optional parameters will be set to default values when omitted.
 
 <br>&nbsp;<br>
 Version 1.2<br>
