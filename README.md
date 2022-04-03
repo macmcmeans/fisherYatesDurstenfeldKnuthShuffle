@@ -28,7 +28,7 @@ None.
 ## Syntax:
 let shuffledArray = fisherYatesDurstenfeldKnuthShuffle( __sourceArray__, [*sattoloCycle*], [*externalRNG*] ); 
 <br>&nbsp;<br>
-let restoredArray = fisherYatesDurstenfeldKnuthUnshuffle( __shuffledArray__, [*sattoloCycle*], __externalrng__ );
+let restoredArray = fisherYatesDurstenfeldKnuthUnshuffle( __shuffledArray__, [*sattoloCycle*], __externalRNG__ );
 <br>&nbsp;<br>
 
 
