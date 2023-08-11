@@ -5,7 +5,7 @@ At minimum, it can be called by supplying a single-dimension array of values. If
 
 The shuffle produces statistically flat output, and the lack of bias may be checked using [this visual tool](https://bost.ocks.org/mike/shuffle/compare.html).
 
-Optionally, [*Sattolo’s algorithm*](https://archive.is/j8KwS) may be used to generate random cyclic permutations of length *n* instead of random permutations. This is useful when the condition to be met involves no element of the array ever ending up in its original position ([derangement](https://archive.is/FKrB2)), but is wholly unsuited for cryptography.
+Optionally, [*Sattolo’s algorithm*](https://archive.is/j8KwS) may be used to generate random cyclic permutations of length *n* instead of random permutations. This is useful when the condition to be met involves no element of the array ever ending up in its original position ([derangement](https://archive.is/FKrB2)) but is wholly unsuited for cryptography.
 
 This version provides [function overloading](https://en.wikipedia.org/wiki/Function_overloading) using internal logic having no external dependencies. Any optional parameters will be set to default values when omitted.
 
